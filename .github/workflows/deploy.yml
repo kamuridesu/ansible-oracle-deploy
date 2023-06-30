@@ -16,7 +16,7 @@ jobs:
       - id: matrix
         run: |
           mkdir applications
-          for file in $(ls files/applications/*.yaml); do cat $file | envsubst > applications/$file ; done
+          for file in $(ls files/applications/*.yaml); do cat $file | envsubst > applications/"${file##*/}" ; done
           echo $(ls applications/*.yaml | jq -R -s -c 'split("\n")[:-1]')
           ls applications
           echo "::set-output name=matrix::$(ls applications/*.yaml | jq -R -s -c 'split("\n")[:-1]')"
