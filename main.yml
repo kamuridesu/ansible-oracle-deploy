@@ -1,0 +1,5 @@
+- name: Deploy new application
+  hosts: all
+  become: true
+  roles:
+    - deploy-prod

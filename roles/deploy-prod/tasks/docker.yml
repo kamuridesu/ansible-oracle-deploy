@@ -1,0 +1,28 @@
+---
+- name: Create deploy folder
+  become: true
+  become_user: "{{ ansible_facts.env.SUDO_USER }}"
+  file:
+    path: "/home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}"
+    state: directory
+
+- name: Add compose file
+  become: true
+  become_user: "{{ ansible_facts.env.SUDO_USER }}"
+  template:
+    src: files/templates/docker-compose.yaml.j2
+    dest: "/home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}/docker-compose.yaml"
+
+- name: Init swarm mode
+  become: true
+  become_user: root
+  community.docker.docker_swarm:
+    state: present
+    advertise_addr: eth0
+
+- name: Deploy stack from a compose file
+  community.docker.docker_stack:
+    state: present
+    name: "{{ APPLICATION_NAME }}"
+    compose:
+      - "/home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}/docker-compose.yaml"

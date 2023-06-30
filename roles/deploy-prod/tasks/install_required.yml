@@ -1,0 +1,22 @@
+---
+- name: Install packages
+  ansible.builtin.apt:
+    pkg:
+      - docker
+      - docker.io
+      - docker-compose
+      - python3-pip
+    state: present
+    update_cache: yes
+
+- name: Install PIP packages
+  ansible.builtin.pip:
+    name: jsondiff
+    state: present
+
+- name: Add user to Docker group
+  user:
+    name: "{{ ansible_facts.env.SUDO_USER }}"
+    state: present
+    group: docker
+    create_home: yes

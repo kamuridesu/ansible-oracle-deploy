@@ -1,0 +1,11 @@
+galaxy_info:
+  role_name: 'loadbalancer'
+  author: 'kamuridesu'
+  description: update load balancer files
+  galaxy_tags:
+    - oracle
+    - docker
+    - prod
+    - deploy
+  license: MIT
+  min_ansible_version: 2.15.1

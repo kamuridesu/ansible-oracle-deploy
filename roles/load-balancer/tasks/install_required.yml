@@ -1,0 +1,7 @@
+---
+- name: Install packages
+  ansible.builtin.apt:
+    pkg:
+      - haproxy
+    state: present
+    update_cache: yes

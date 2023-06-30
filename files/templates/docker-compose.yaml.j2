@@ -1,0 +1,27 @@
+version: "3"
+services:
+  {{ APPLICATION_NAME }}:
+    image: {{ IMAGE }}:{{ VERSION }}
+    {% if PORTS %}
+ports:
+  {% for PORT in PORTS %}
+    - {{ PORT | trim }}
+  {% endfor %}
+{% endif %}
+  deploy:
+      resources:
+        limits:
+          cpus: '{{ CPUS }}'
+          memory: {{ MEMORY }}
+      replicas: {% if REPLICAS is defined %} {{ REPLICAS }} {% else %} 1 {% endif %}
+
+      restart_policy:
+        condition: on-failure
+
+    {% if EXTRAOPTS is defined %}
+{{ EXTRAOPTS }}
+    {% endif %}
+
+{% if EXTRAOPTS_EXTRA is defined %}
+{{ EXTRAOPTS_EXTRA }}
+{% endif %}
