@@ -6,22 +6,27 @@ on:
       - main
 
 jobs:
-  deploy_application:
-    name: Deploy application
+  list_applications:
+    name: List application files
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Create a copy of the file
+      - uses: actions/checkout@v3
+      - id: matrix
         run: |
           mkdir applications
           for file in *.yml *.yaml; do cat $file | envsubst > applications/$file ; done
-      - id: matrix
-        run: |
-          for file in applications/*.yml applications/*.yaml; do $file ; done
+          echo "::set-output name=matrix::$(ls applications/*.yaml | jq -R -s -c 'split("\n")[:-1]')"
 
+  deploy_applications:
+    needs: list_applications
+    strategy:
+      matrix:
+        application: ${{ fromJson(needs.list_applications.outputs.matrix )}}
+    name: Deploy applications
+    runs-on: ubuntu-latest
+    steps:
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
       with:
@@ -32,4 +37,4 @@ jobs:
           ${{secrets.INVENTORY}}
         requirements: requirements.yaml
         options:
-          --extra-vars @applications/
+          --extra-vars ${{ matrix.application }}
