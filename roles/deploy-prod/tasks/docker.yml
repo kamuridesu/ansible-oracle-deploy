@@ -18,7 +18,7 @@
   become_user: root
   community.docker.docker_swarm:
     state: present
-    advertise_addr: eth0
+    # advertise_addr: eth0
 
 - name: Deploy stack from a compose file
   community.docker.docker_stack:
