@@ -42,6 +42,7 @@ jobs:
         mkdir applications
         for file in $(ls files/applications/*.yaml); do cat $file | envsubst > applications/"${file##*/}" ; done
         ls applications
+        cat applications/deepdanbooryu.yaml
 
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
