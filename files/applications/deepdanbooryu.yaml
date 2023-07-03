@@ -1,0 +1,15 @@
+---
+APPLICATION_NAME: deepdanbooryu
+IMAGE: kamuri/deepdanbooryu
+VERSION: latest
+PORTS:
+- 3000:80
+CPUS: '0.3'
+MEMORY: 100m
+EXTRAOPTS: |
+  environment:
+        - DEEPDANBOORYU_USERNAME="${DEEPDANBOORYU_USERNAME}"
+        - DEEPDANBOORYU_PASSWORD="${DEEPDANBOORYU_PASSWORD}"
+      volumes:
+        - ./db/:/app/db
+      command: server

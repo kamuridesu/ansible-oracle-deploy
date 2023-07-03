@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+
     steps:
       - uses: actions/checkout@v3
       - id: matrix
@@ -24,15 +25,24 @@ jobs:
     strategy:
       matrix:
         application: ${{ fromJson(needs.list_applications.outputs.matrix )}}
+
     name: Deploy applications
     runs-on: ubuntu-latest
+
+    env:
+      # Put all env vars here to use envsubst later
+      DEEPDANBOORYU_PASSWORD: "{{ secrets.DEEPDANBOORYU_PASSWORD }}"
+      DEEPDANBOORYU_USERNAME: "{{ secrets.DEEPDANBOORYU_USERNAME }}"
+
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup application files
       run: |
         mkdir applications
         for file in $(ls files/applications/*.yaml); do cat $file | envsubst > applications/"${file##*/}" ; done
         ls applications
+
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
       with:
