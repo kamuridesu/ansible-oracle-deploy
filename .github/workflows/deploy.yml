@@ -43,4 +43,4 @@ jobs:
           ${{secrets.INVENTORY}}
         requirements: requirements.yaml
         options:
-          --extra-vars ${{ matrix.application }}
+          --extra-vars "@${{ matrix.application }}"
