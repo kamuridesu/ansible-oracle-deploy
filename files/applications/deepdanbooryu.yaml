@@ -3,7 +3,7 @@ APPLICATION_NAME: deepdanbooryu
 IMAGE: kamuri/deepdanbooryu
 VERSION: latest
 PORTS:
-- 3000:80
+- 3001:80
 CPUS: '0.3'
 MEMORY: 100m
 EXTRAOPTS: |
