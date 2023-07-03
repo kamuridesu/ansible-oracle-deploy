@@ -33,6 +33,9 @@ jobs:
       # Put all env vars here to use envsubst later
       DEEPDANBOORYU_PASSWORD: "${{ secrets.DEEPDANBOORYU_PASSWORD }}"
       DEEPDANBOORYU_USERNAME: "${{ secrets.DEEPDANBOORYU_USERNAME }}"
+      # Invidious Secrets
+      INVIDIOUS_DB_USER: "${{ secrets.INVIDIOUS_DB_USER }}"
+      INVIDIOUS_DB_PASSWORD: "${{ secrets.INVIDIOUS_DB_PASSWORD }}"
 
     steps:
     - uses: actions/checkout@v3
