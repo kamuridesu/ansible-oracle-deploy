@@ -31,8 +31,8 @@ jobs:
 
     env:
       # Put all env vars here to use envsubst later
-      DEEPDANBOORYU_PASSWORD: "{{ secrets.DEEPDANBOORYU_PASSWORD }}"
-      DEEPDANBOORYU_USERNAME: "{{ secrets.DEEPDANBOORYU_USERNAME }}"
+      DEEPDANBOORYU_PASSWORD: "${{ secrets.DEEPDANBOORYU_PASSWORD }}"
+      DEEPDANBOORYU_USERNAME: "${{ secrets.DEEPDANBOORYU_USERNAME }}"
 
     steps:
     - uses: actions/checkout@v3
