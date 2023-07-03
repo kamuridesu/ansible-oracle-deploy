@@ -13,13 +13,13 @@
     src: files/templates/docker-compose.yaml.j2
     dest: "/home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}/docker-compose.yaml"
 
-- name: Echo Compose File
-  command: "cat /home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}/docker-compose.yaml"
-  register: command_output
+# - name: Echo Compose File
+#   command: "cat /home/{{ ansible_facts.env.SUDO_USER }}/deployments/{{ APPLICATION_NAME }}/docker-compose.yaml"
+#   register: command_output
 
-- name: Debug compose file
-  debug:
-    msg: "{{ command_output.stdout }}"
+# - name: Debug compose file
+#   debug:
+#     msg: "{{ command_output.stdout }}"
 
 - name: Init swarm mode
   become: true
