@@ -1,8 +1,0 @@
----
-APPLICATION_NAME: helloapi
-IMAGE: kamuri/helloapi
-VERSION: latest
-PORTS:
-- 3001:8080
-CPUS: '0.3'
-MEMORY: 100m

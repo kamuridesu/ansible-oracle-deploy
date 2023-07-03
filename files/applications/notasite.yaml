@@ -6,8 +6,8 @@ PORTS:
 - 3000:80
 CPUS: '0.3'
 MEMORY: 100m
-EXTRAOPTS: |
-  environment:
-        - TOKEN="kamuridesu"
-      volumes:
-        - ./db/:/app/db
+# EXTRAOPTS: |
+#   environment:
+#         - TOKEN="kamuridesu"
+#       volumes:
+#         - ./db/:/app/db
