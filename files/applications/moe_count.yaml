@@ -1,11 +1,11 @@
 ---
 APPLICATION_NAME: moe_count
-IMAGE: kamuri/moe_count
+IMAGE: kamuri/moe-count-go
 VERSION: latest
 PORTS:
-- 3003:80
+- 3003:8080
 CPUS: '0.3'
 MEMORY: 100m
 EXTRAOPTS: |
   volumes:
-        - ./db/:/app/db   
+        - ./db/users.db/:/app/users.db
