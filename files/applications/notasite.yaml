@@ -1,7 +1,7 @@
 ---
 APPLICATION_NAME: notasite
 IMAGE: kamuri/notasite
-VERSION: 0.0.4
+VERSION: 0.0.5
 PORTS:
 - 3000:80
 CPUS: '0.3'
