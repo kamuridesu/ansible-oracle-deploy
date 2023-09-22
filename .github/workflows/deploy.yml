@@ -36,6 +36,8 @@ jobs:
       # Invidious Secrets
       INVIDIOUS_DB_USER: "${{ secrets.INVIDIOUS_DB_USER }}"
       INVIDIOUS_DB_PASSWORD: "${{ secrets.INVIDIOUS_DB_PASSWORD }}"
+      # Tabby Secrets
+      TABBY_AUTH_TOKEN: "${{ secrets.TABBY_AUTH_TOKEN }}"
 
     steps:
     - uses: actions/checkout@v3

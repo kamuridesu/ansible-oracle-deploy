@@ -1,7 +1,7 @@
 ---
 APPLICATION_NAME: tabby-gateway
 IMAGE: ghcr.io/eugeny/tabby-connection-gateway
-VERSION: master
+VERSION: latest
 PORTS:
 - 3005:9000
 CPUS: '0.3'

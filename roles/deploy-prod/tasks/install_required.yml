@@ -7,7 +7,6 @@
       - docker-compose
       - python3-pip
     state: present
-    update_cache: yes
 
 - name: Install PIP packages
   ansible.builtin.pip:
