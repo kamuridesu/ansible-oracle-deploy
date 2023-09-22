@@ -1,0 +1,12 @@
+---
+APPLICATION_NAME: tabby-gateway
+IMAGE: ghcr.io/eugeny/tabby-connection-gateway
+VERSION: master
+PORTS:
+- 3005:9000
+CPUS: '0.3'
+MEMORY: 100m
+EXTRAOPTS: |
+  environment:
+        - TABBY_AUTH_TOKEN="${TABBY_AUTH_TOKEN}"
+      command: "--token-auth --host 0.0.0.0"
