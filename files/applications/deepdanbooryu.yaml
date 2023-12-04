@@ -1,7 +1,7 @@
 ---
 APPLICATION_NAME: deepdanbooryu
 IMAGE: kamuri/deepdanbooryu
-VERSION: 0.1
+VERSION: 0.2
 PORTS:
 - 3001:80
 CPUS: '0.3'
